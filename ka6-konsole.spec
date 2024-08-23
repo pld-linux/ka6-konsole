@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.05.2
+%define		kdeappsver	24.08.0
 %define		qtver		5.15.2
 %define		kf5ver		5.71.0
 %define		kaname		konsole
 Summary:	KDE Terminal Emulator
 Name:		ka6-%{kaname}
-Version:	24.05.2
+Version:	24.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	2d65141b7f9cfe4eae29ddefad6cfd07
+# Source0-md5:	9cce74d7e4bddce4d574c021dd3d8139
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -129,7 +129,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/konsolerc
 %attr(755,root,root) %{_bindir}/konsole
 %attr(755,root,root) %{_bindir}/konsoleprofile
 %attr(755,root,root) %{_libdir}/kconf_update_bin/konsole_globalaccel
@@ -146,8 +145,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kglobalaccel/org.kde.konsole.desktop
 %{_datadir}/kio/servicemenus/konsolerun.desktop
 %{_datadir}/knotifications6/konsole.notifyrc
-%{_datadir}/knsrcfiles/konsole.knsrc
-%{_datadir}/konsole
 %{_datadir}/metainfo/org.kde.konsole.appdata.xml
 %{_datadir}/qlogging-categories6/konsole.categories
 %{zsh_compdir}/_konsole
