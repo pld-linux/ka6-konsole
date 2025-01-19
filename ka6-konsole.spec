@@ -2,8 +2,8 @@
 # Conditional build:
 %bcond_with	tests		# build with tests
 %define		kdeappsver	24.12.1
-%define		qtver		5.15.2
-%define		kf5ver		5.71.0
+%define		qtver		6.5.0
+%define		kf5ver		6.0.0
 %define		kaname		konsole
 Summary:	KDE Terminal Emulator
 Name:		ka6-%{kaname}
@@ -16,7 +16,9 @@ Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kan
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
+BuildRequires:	Qt6Multimedia-devel >= %{qtver}
 BuildRequires:	Qt6PrintSupport-devel >= %{qtver}
+BuildRequires:	Qt6Qt5Compat-devel >= %{qtver}
 BuildRequires:	Qt6Widgets-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
 BuildRequires:	kf6-extra-cmake-modules >= %{kf5ver}
@@ -42,6 +44,7 @@ BuildRequires:	kf6-ktextwidgets-devel >= %{kf5ver}
 BuildRequires:	kf6-kwidgetsaddons-devel >= %{kf5ver}
 BuildRequires:	kf6-kwindowsystem-devel >= %{kf5ver}
 BuildRequires:	kf6-kxmlgui-devel >= %{kf5ver}
+BuildRequires:	libicu-devel >= 61.0
 BuildRequires:	libstdc++-devel >= 6:8
 BuildRequires:	ninja
 BuildRequires:	qt6-build >= %{qtver}
@@ -51,7 +54,9 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 Requires:	Qt6Core >= %{qtver}
 Requires:	Qt6DBus >= %{qtver}
+Requires:	Qt6Multimedia >= %{qtver}
 Requires:	Qt6PrintSupport >= %{qtver}
+Requires:	Qt6Qt5Compat >= %{qtver}
 Requires:	Qt6Widgets >= %{qtver}
 Requires:	kf6-kbookmarks >= %{kf5ver}
 Requires:	kf6-kconfig >= %{kf5ver}
