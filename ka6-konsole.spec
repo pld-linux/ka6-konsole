@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.08.2
+%define		kdeappsver	25.08.3
 %define		qtver		6.5.0
 %define		kf5ver		6.0.0
 %define		kaname		konsole
 Summary:	KDE Terminal Emulator
 Name:		ka6-%{kaname}
-Version:	25.08.2
-Release:	2
+Version:	25.08.3
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	422f82b5667bb0fd8f0f28332da0e3a7
+# Source0-md5:	e6dc72d10987c6f0ebb13995002c6d93
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -143,12 +143,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/konsole
 %attr(755,root,root) %{_bindir}/konsoleprofile
-%attr(755,root,root) %{_libdir}/libkonsoleapp.so.*.*
-%attr(755,root,root) %{_libdir}/libkonsoleprivate.so.*.*
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/parts/konsolepart.so
+%{_libdir}/libkonsoleapp.so.*.*
+%{_libdir}/libkonsoleprivate.so.*.*
+%{_libdir}/qt6/plugins/kf6/parts/konsolepart.so
 %dir %{_libdir}/qt6/plugins/konsoleplugins
-%attr(755,root,root) %{_libdir}/qt6/plugins/konsoleplugins/konsole_quickcommandsplugin.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/konsoleplugins/konsole_sshmanagerplugin.so
+%{_libdir}/qt6/plugins/konsoleplugins/konsole_quickcommandsplugin.so
+%{_libdir}/qt6/plugins/konsoleplugins/konsole_sshmanagerplugin.so
 %{_desktopdir}/org.kde.konsole.desktop
 %{_datadir}/kglobalaccel/org.kde.konsole.desktop
 %{_datadir}/kio/servicemenus/konsolerun.desktop
