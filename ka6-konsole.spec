@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.12.0
+%define		kdeappsver	25.12.1
 %define		qtver		6.5.0
 %define		kf5ver		6.0.0
 %define		kaname		konsole
 Summary:	KDE Terminal Emulator
 Name:		ka6-%{kaname}
-Version:	25.12.0
+Version:	25.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	efc94b03d9b8ab1aa22b4f7b590c2721
+# Source0-md5:	43b79e7cff821ef6c06005da929f148d
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
