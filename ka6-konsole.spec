@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	26.08.1
+%define		kdeappsver	26.08.2
 %define		qtver		6.5.0
 %define		kf5ver		6.0.0
 %define		kaname		konsole
 Summary:	KDE Terminal Emulator
 Name:		ka6-%{kaname}
-Version:	26.08.1
+Version:	26.08.2
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	06826dacf97fc7e3e50c58d45afbeb3c
+# Source0-md5:	6300f4ce859ea04701b64b31cbb1bad7
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -52,7 +52,6 @@ BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
-Requires(post,postun):	desktop-file-utils
 Requires:	Qt6Core >= %{qtver}
 Requires:	Qt6DBus >= %{qtver}
 Requires:	Qt6Multimedia >= %{qtver}
@@ -80,6 +79,7 @@ Requires:	kf6-ktextwidgets >= %{kf5ver}
 Requires:	kf6-kwidgetsaddons >= %{kf5ver}
 Requires:	kf6-kwindowsystem >= %{kf5ver}
 Requires:	kf6-kxmlgui >= %{kf5ver}
+Requires:	%{name}-data = %{version}-%{release}
 %requires_eq_to Qt6Core Qt6Core-devel
 Obsoletes:	ka5-%{kaname} < %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -107,6 +107,19 @@ Cechy
 - Zakładki
 - Szukanie
 - Zapisywanie danych wyjściowych
+
+%package data
+Summary:	Data files for %{kaname}
+Summary(pl.UTF-8):	Dane dla %{kaname}
+Group:		X11/Applications
+Requires(post,postun):	desktop-file-utils
+BuildArch:	noarch
+
+%description data
+Data files for %{kaname}.
+
+%description data -l pl.UTF-8
+Dane dla %{kaname}.
 
 %prep
 %setup -q -n %{kaname}-%{version}
@@ -141,13 +154,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
+
+%post data
 %update_desktop_database_post
 
 %postun
 /sbin/ldconfig
+
+%postun data
 %update_desktop_database_postun
 
-%files -f %{kaname}.lang
+%files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/konsole
 %attr(755,root,root) %{_bindir}/konsoleprofile
@@ -157,6 +174,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/qt6/plugins/konsoleplugins
 %{_libdir}/qt6/plugins/konsoleplugins/konsole_quickcommandsplugin.so
 %{_libdir}/qt6/plugins/konsoleplugins/konsole_sshmanagerplugin.so
+
+%files data -f %{kaname}.lang
+%defattr(644,root,root,755)
 %{_desktopdir}/org.kde.konsole.desktop
 %{_datadir}/kglobalaccel/org.kde.konsole.desktop
 %{_datadir}/kio/servicemenus/konsolerun.desktop
